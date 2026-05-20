@@ -312,8 +312,9 @@ const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tq
                     const imgUrl = row.c[2] ? row.c[2].v : 'https://via.placeholder.com/300';
 
                     // ຂໍ້ຄວາມທີ່ຈະສົ່ງເຂົ້າ WhatsApp ເວລາກົດສັ່ງຊື້
-                    const message = encodeURIComponent(`ສະບາຍດີ! ຂ້ອຍສົນໃຈສັ່ງຊື້ສິນຄ້າ: ${name} \nລາຄາ: ${price}`);
-                    const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+                   // ຂໍ້ຄວາມທີ່ຈະສົ່ງເຂົ້າ WhatsApp ເວລາກົດສັ່ງຊື້ (ເພີ່ມ imgUrl ຕໍ່ທ້າຍ)
+const message = encodeURIComponent(`ສະບາຍດີ! ຂ້ອຍສົນໃຈສັ່ງຊື້ສິນຄ້າ: ${name} \nລາຄາ: ${price} ກີບ \nຮູບພາບສິນຄ້າ: ${imgUrl}`);
+const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 
                     // ສ້າງກາດສິນຄ້າ HTML
                     const card = document.createElement('div');
