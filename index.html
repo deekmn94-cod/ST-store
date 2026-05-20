@@ -1,316 +1,347 @@
-<html lang="th">
+<!DOCTYPE html>
+<html lang="lo">
 <head>
-    <link rel="icon" type="image/png" href="AAA.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ST store </title>
+    <title>TN STORE</title>
+    <link rel="icon" type="image/png" href="mmm.jpeg">
+    <!-- ນຳເຂົ້າ Font ພາສາລາວເພື່ອຄວາມສວຍງາມ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* สไตล์หมวดหมู่ที่เพิ่มใหม่ */
-.category-box {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 15px;
-    flex-wrap: wrap;
-}
-.category-tag {
-    background: #ffffff;
-    border: 1px solid #ddd;
-    padding: 6px 15px;
-    border-radius: 20px;
-    font-size: 13px;
-    cursor: pointer;
-    transition: 0.3s;
-    color: #333;
-    text-decoration: none;
-}
-.category-tag:hover {
-    background: #008cba;
-    color: white;
-    border-color: #008cba;
-}
-        /* ปุ่ม 3 ขีด */
-.menu-icon {
-    font-size: 30px;
-    cursor: pointer;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 999;
-    background: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-/* แถบเมนูข้างๆ (Side Nav) */
-.sidenav {
-    height: 100%;
-    width: 0; /* เริ่มต้นให้ซ่อนไว้ */
-    position: fixed;
-    z-index: 101;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s; /* ความเร็วตอนเลื่อนออกมา */
-    padding-top: 60px;
-}
-
-.sidenav a {
-    padding: 15px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover { color: #f1f1f1; }
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-        /* สไตล์ของช่องค้นหา */
-.search-container {
-    text-align: center;
-    margin-bottom: 30px;
-}
-#searchInput {
-    width: 80%;
-    max-width: 400px;
-    padding: 12px;
-    font-size: 16px;
-    border: 2px solid #ddd;
-    border-radius: 25px; /* ขอบมน */
-    outline: none;
-}
-#searchInput:focus { border-color: #008cba; }
-        /* ส่วนการตกแต่ง (CSS) */
-        body { font-family: 'Arial', sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
-        .container { max-width: 1000px; margin: auto; }
-        h1 { text-align: center; color: #333; }
-        
-        /* การจัดวางสินค้า */
-        .product-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 20px; 
+        /* --- ການຕັ້ງຄ່າພື້ນຖານ (Theme & Reset) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans Lao', sans-serif;
         }
-        
-        /* กล่องสินค้า */
-        .product-card { 
-            background: white; padding: 15px; border-radius: 10px; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center;
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            overflow-x: hidden;
         }
-        .product-card img { max-width: 100%; border-radius: 5px; height: 200px; object-fit: cover; }
-        .price { color: #0a0205; font-size: 1.2em; font-weight: bold; }
-        .buy-button { 
-            display: inline-block; background: #070707; color: white; 
-            padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 10px; 
+
+        /* --- ສ່ວນທີ 1: Header (ໂລໂກ້ + ສີຂຽວໄລ່ລະດັບສະໄຕຣ໌ກາຕູນ) --- */
+        .header-section {
+            background: linear-gradient(135deg, #a8ff78, #78ffd6); /* ໄລ່ເສດສີຂຽວທັນສະໄໝ */
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            border-bottom: 5px solid #52d681; /* ເສັ້ນຂອບສະໄຕຣ໌ກາຕູນ */
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            box-shadow: 0 8px 0 rgba(0,0,0,0.05);
         }
-        /* CSS เดิมของคุณ */
-        body { font-family: 'Arial', sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
-        .container { max-width: 1000px; margin: auto; }
-        h1 { text-align: center; color: #333; }
-        
-        .menu-icon { font-size: 30px; cursor: pointer; position: fixed; top: 15px; left: 15px; z-index: 999; background: white; padding: 5px 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        .sidenav { height: 100%; width: 0; position: fixed; z-index: 101; top: 0; left: 0; background-color: #111; overflow-x: hidden; transition: 0.5s; padding-top: 60px; }
-        .sidenav a { padding: 15px 32px; text-decoration: none; font-size: 20px; color: #818181; display: block; transition: 0.3s; }
-        .sidenav a:hover { color: #f1f1f1; }
-        .sidenav .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; }
 
-        .search-container { text-align: center; margin-bottom: 30px; }
-        #searchInput { width: 80%; max-width: 400px; padding: 12px; font-size: 16px; border: 2px solid #ddd; border-radius: 25px; outline: none; }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
 
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .product-card { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; position: relative; }
-        .product-card img { max-width: 100%; border-radius: 5px; height: 200px; object-fit: cover; }
-        .price { color: #0a0205; font-size: 1.2em; font-weight: bold; }
-        .buy-button { display: inline-block; background: #070707; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
+        /* ອະນິເມຊັນດຶງດູດສາຍຕາຂອງໂລໂກ້ເວລາ Hover */
+        .logo-img:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .shop-title {
+            margin-left: 20px;
+            font-size: 24px;
+            color: #1b4d3e;
+            font-weight: 700;
+            text-shadow: 2px 2px 0px #fff;
+        }
+
+        /* --- ສ່ວນທີ 2: ພື້ນທີ່ສະແດງສິນຄ້າ (ສີຂາວ Clean + Grid 5x5) --- */
+        .product-section {
+            background: linear-gradient(180deg, #ffffff, #f7f9fa); /* ເສດສີຂາວເບິ່ງສະບາຍຕາ */
+            padding: 60px 20px;
+            min-height: 600px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            color: #333;
+            font-weight: 700;
+            position: relative;
+        }
+
+        /* ລະບົບ Grid ຮອງຮັບທຸກອຸປະກອນ (Responsive) */
+        .product-grid {
+            display: grid;
+            /* ຄອມພິວເຕີຈະສະແດງເປັນ 5 ຄໍລຳ (5x5) */
+            grid-template-columns: repeat(5, minmax(0, 1fr)); 
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* ການຕົກແຕ່ງກາດສິນຄ້າສະໄຕຣ໌ກາຕູນ */
+        .product-card {
+            background: #fff;
+            border: 3px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 8px 0 #e2e8f0; /* ເງົາແບບ Pop-art ກາຕູນ */
+            /* ອະນິເມຊັນແບບເດັ້ງ (Bouncy) ເວລາໂຫຼດ ຫຼື ປ່ຽນແປງ */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* ລະບົບຊູບ (Zoom Effect) */
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 0 #cbd5e1;
+            border-color: #38bdf8;
+        }
+
+        .image-box {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            border-radius: 15px;
+            background-color: #f1f5f9;
+            margin-bottom: 15px;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* ຊູບຮູບພາບດ້ານໃນແບບນຸ່ມນວນ */
+            transition: transform 0.3s ease; 
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.1);
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        .product-price {
+            font-size: 20px;
+            color: #ef4444;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        /* ປຸ່ມສັ່ງຊື້ */
+        .buy-btn {
+            background-color: #25d366; /* ສີ WhatsApp */
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 4px 0 #128c7e;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .buy-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 0px 0 #128c7e;
+        }
+
+        /* --- ສ່ວນທີ 3: ທ້າຍເວັບ Footer (ສີຟ້າໄລ່ລະດັບ) --- */
+        .footer-section {
+            background: linear-gradient(135deg, #2193b0, #6dd5ed); /* ໄລ່ເສດສີຟ້າທັນສະໄໝ */
+            color: white;
+            padding: 50px 20px;
+            border-top: 5px solid #34aadc;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .footer-box h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .footer-box p, .footer-box a {
+            color: #f0fdfa;
+            font-size: 16px;
+            line-height: 1.8;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 14px;
+        }
+
+        /* --- ລະບົບ Responsive ຮອງຮັບອຸປະກອນອື່ນໆ --- */
+        @media (max-width: 1200px) {
+            .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+        @media (max-width: 992px) {
+            .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .footer-content { grid-template-columns: 1fr; gap: 20px; text-align: center; }
+        }
+        @media (max-width: 768px) {
+            .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .header-section { padding: 15px 20px; justify-content: center; text-align: center; flex-direction: column; }
+            .shop-title { margin-left: 0; margin-top: 10px; }
+        }
+        @media (max-width: 480px) {
+            .product-grid { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        }
+
+        /* ຕົວໂຫຼດຂໍ້ມູນລະຫວ່າງລໍຖ້າ Google Sheets */
+        .loading {
+            text-align: center;
+            font-size: 20px;
+            grid-column: span 5;
+            padding: 50px 0;
+            color: #64748b;
+        }
     </style>
 </head>
 <body>
-    
-<div class="menu-icon" onclick="openNav()">&#9776;</div>
 
-<div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="#" onclick="showPage('home')">หน้าแรก</a>
-    <a href="#" onclick="showPage('promo')">โปรโมชั่น</a>
-</div>
-<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
-    <a href="https://www.facebook.com/share/14TMsL4xRL8/" style="text-decoration: none; color: rgb(33, 27, 27); background: #ffffff; padding: 10px 15px; border-radius: 5px; font-size: 14px;">Facebook</a>
-    
-    <a href="https://www.tiktok.com/@tn.store83?_r=1&_t=ZS-93AMqTfuZUK" style="text-decoration: none; color: rgb(8, 1, 1); background: #ffffff; padding: 10px 15px; border-radius: 5px; font-size: 14px;">TikTok</a>
-    
-    <a href="https://www.instagram.com/floralhaven_19?igsh=MW04dGgyNWtkZmI5Mw==" style="text-decoration: none; color: rgb(8, 2, 2); background: #ffffff; padding: 10px 15px; border-radius: 5px; font-size: 14px;">Instagram</a>
-</div>
-<header>
-  <div class="logo">
-    
-      <img src="AAA.png" style="display:block; margin:20px auto; width:100px; height:100px; object-fit:cover; border-radius:20px; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
-    </a>
-  </div>
-</header>
-<div class="container">
-    <h1>ST STORE</h1>
-
-    <div class="search-container">
-        <input type="text" id="searchInput" onkeyup="searchProduct()" placeholder="ພິມຊື່ສີນຄ້າເພື່ອຄົ້ນຫາ...">
-    </div>
-    <div class="search-container">
-    <div class="category-box">
-        <span class="category-tag" onclick="setSearch('ເສື້ອ')">ເສື້ອຜ້າ</span>
-        <span class="category-tag" onclick="setSearch('ສົ່ງ')">ສົ່ງ</span>
-        <span class="category-tag" onclick="setSearch('ເກີບ')">ເກີບ</span>
-        <span class="category-tag" onclick="setSearch('ຂະໝົມ')">ຂະໝົມ</span>
-        <span class="category-tag" onclick="setSearch('ເຄື່ອງປະດັບ')">ເຄື່ອງປະດັບ</span>
-        <span class="category-tag" onclick="setSearch('')">ທັ້ງໝົດ</span>
-    </div>
-
-
-    <div id="productGrid" class="product-grid">
+    <!-- ສ່ວນທີ 1: Header (ສີຂຽວ) -->
+    <header class="header-section">
+        <div class="logo-container">
+            <!-- ໃສ່ລິ້ງຮູບພາບຂອງທ່ານຢູ່ບ່ອນ src -->
+            <img src="mmm.jpeg" alt="Logo" class="logo-img">
+            <h1 class="shop-title">Welcome to TN STORE </h1>
         </div>
+    </header>
 
-    <div id="promo-page" style="display:none; background: white; padding: 20px; border-radius: 15px; text-align: center; margin-top: 20px; border: 2px dashed #faf8f8;">
-        <h2 style="color: #000000;">ໄວໆນີ້</h2>
-        <p> <b></b></p>
+    <!-- ສ່ວນທີ 2: ສະແດງສິນຄ້າ (ສີຂາວ) -->
+    <main class="product-section">
+        <h2 class="section-title">✨ ລາຍການສິນຄ້າຂອງພວກເຮົ່າ ✨</h2>
         
-    </div>
-    <footer style="text-align: center; padding: 20px; background: #fbfafa; margin-top: 20px;">📍 ຮ້ານ ST store: [laos] | โทร: [ເບີໂທລະສັບ 020 78258939 ]</footer>
+        <div class="product-grid" id="productGrid">
+            <div class="loading">⏳ ກຳລັງໂຫຼດຂໍ້ມູນສິນຄ້າ...</div>
+        </div>
+    </main>
 
-</div>
+    <!-- ສ່ວນທີ 3: Footer ທ້າຍເວັບ (ສີຟ້າ) -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <div class="footer-box">
+                <h3>ກ່ຽວກັບຮ້ານ</h3>
+                <p>ສີນຄ້າທຸກຍ່າງແມ່ນພີອໍເດີແລະບໍ່ມີການເກັບເງີນປາຍທາງ</p>
+            </div>
+            <div class="footer-box">
+                <h3>ຊ່ອງທາງຕິດຕໍ່</h3>
+                <p>📍 ທີ່ຕັ້ງ: ນະຄອນຫຼວງວຽງຈັນ</p>
+                <p>📞 ເບີໂທ: +856 20 59 112 313</p>
+            </div>
+            <div class="footer-box">
+                <h3>ຕິດຕາມພວກເຮົາ</h3>
+                <p><a href="#">Facebook Page</a></p>
+                <p><a href="#">Instagram</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TN STORE.</p>
+        </div>
+    </footer>
 
-<script>
-    // 1. ຕັ້ງຄ່າການເຊື່ອມຕໍ່ (ເອົາແຕ່ ID ຂອງ Sheet ມາ)
-const SHEET_ID = '1WrImMBQsGZcl0s6hdGoH_sl-hOHGcgLwfi0etxIMLhQ';
-const SHEET_NAME = 'ชีด1'; // ຊື່ແທັບຂອງເຈົ້າ
-
-const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${SHEET_NAME}`;
-
-
-
-
-    function fetchGoogleSheets() {
-        fetch(url)
-            .then(res => res.text())
-            .then(data => {
-                // ຕັດຂໍ້ຄວາມສ່ວນເກີນທີ່ Google ສົ່ງມາໃຫ້ເປັນ JSON ທີ່ຖືກຕ້ອງ
-                const jsonData = JSON.parse(data.substring(47, data.length - 2));
+    <!-- --- ລະບົບເຊື່ອມຕໍ່ກູເກິລຊີດ & WhatsApp --- -->
+    <script>
+        // 1. ຕັ້ງຄ່າຂໍ້ມູນຂອງທ່ານຢູ່ບ່ອນນີ້
+        const WHATSAPP_NUMBER = "8562059112313"; // ໃສ່ເບີ WhatsApp ຂອງທ່ານ (ມີລະຫັດປະເທດ 856 ຕັດ 0 ທາງໜ້າອອກ)
+        const SHEET_ID = "1WrImMBQsGZcl0s6hdGoH_sl-hOHGcgLwfi0etxIMLhQ"; // ໃສ່ ID ຂອງ Google Sheet ຂອງທ່ານ
+        
+        // ລິ້ງດຶງຂໍ້ມູນຈາກ Google Sheet ເປັນ JSON
+       // ໃຊ້ SHEET_ID ມາປະກອບເປັນລິ້ງ API
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+        async function fetchProducts() {
+            try {
+                const response = await fetch(SHEET_URL);
+                const text = await response.text();
+                
+                // ຕັດຂໍ້ມູນສ່ວນເກີນທີ່ Google ສົ່ງມາເພື່ອໃຫ້ເປັນ JSON ທີ່ສົມບູນ
+                const jsonData = JSON.parse(text.substring(47, text.length - 2));
                 const rows = jsonData.table.rows;
                 
-                // ແປງຂໍ້ມູນຈາກແຕ່ລະ Row ໃຫ້ມາຢູ່ໃນຮູບແບບທີ່ Code ເຮົາເຂົ້າໃຈ
-                products = rows.filter((row, index) => index > 0).map((row, index) => ({
-                    id: index + 1,
-                    name: row.c[0] ? row.c[0].v : '',
-                    desc: row.c[1] ? row.c[1].v : '',
-                    price: row.c[2] ? row.c[2].v : '',
-                    img: row.c[3] ? row.c[3].v : ''
-                }));
+                const productGrid = document.getElementById('productGrid');
+                productGrid.innerHTML = ''; // ລຶບຕົວໂຫຼດອອກ
+c
+                // ວົນລູບສະແດງຜົນສິນຄ້າ
+                // ສົມມຸດວ່າ: ຄໍລຳ A = ຊື່ສິນຄ້າ, ຄໍລຳ B = ລາຄາ, ຄໍລຳ C = ລິ້ງຮູບພາບ (URL)
+                rows.forEach(row => {
+                    const name = row.c[0] ? row.c[0].v : 'ບໍ່ມີຊື່ສິນຄ້າ';
+                    const price = row.c[1] ? row.c[1].v : '0';
+                    const imgUrl = row.c[2] ? row.c[2].v : 'https://via.placeholder.com/300';
 
-                renderProducts(); // ສະແດງຜົນສິນຄ້າທັນທີ
-            })
-            .catch(err => {
-                console.error("Error:", err);
-                document.getElementById('productGrid').innerHTML = "<p style='text-align:center;'>ບໍ່ສາມາດໂຫຼດຂໍ້ມູນໄດ້, ກະລຸນາກວດສອບການ Share Google Sheets.</p>";
-            });
-    }
+                    // ຂໍ້ຄວາມທີ່ຈະສົ່ງເຂົ້າ WhatsApp ເວລາກົດສັ່ງຊື້
+                    const message = encodeURIComponent(`ສະບາຍດີ! ຂ້ອຍສົນໃຈສັ່ງຊື້ສິນຄ້າ: ${name} \nລາຄາ: ${price}`);
+                    const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 
-    // 3. ຟັງຊັນສະແດງສິນຄ້າໃນໜ້າເວັບ
-    function renderProducts() {
-        const grid = document.getElementById('productGrid');
-        grid.innerHTML = '';
-        
-        products.forEach((pd, index) => {
-            grid.innerHTML += `
-                <div class="product-card">
-                    <img src="${pd.img}" alt="${pd.name}" onerror="this.src='https://via.placeholder.com/250?text=No+Image'">
-                    <h3>${pd.name}</h3>
-                    <p>${pd.desc}</p>
-                    <p class="price">${pd.price}</p>
-                    <button class="buy-button" onclick="sendOrder(${index})">WhatsApp</button>
-                </div>
-            `;
-        });
-    }
+                    // ສ້າງກາດສິນຄ້າ HTML
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <div>
+                            <div class="image-box">
+                                <img src="${imgUrl}" alt="${name}" class="product-img">
+                            </div>
+                            <div class="product-name">${name}</div>
+                            <div class="product-price">${Number(price).toLocaleString()} ກີບ</div>
+                        </div>
+                        <button class="buy-btn" onclick="window.open('${whatsappLink}', '_blank')">
+                            🛒 ສັ່ງຊື້ທາງ WhatsApp
+                        </button>
+                    `;
+                    productGrid.appendChild(card);
+                });
 
-    // 4. ຟັງຊັນສົ່ງຄຳສັ່ງຊື້ໄປ WhatsApp
-    function sendOrder(index) {
-        const item = products[index];
-        const phoneNumber = "8562059112313";
-        const message = `ສະບາຍດີ TN Store! ຂ້ອຍສົນໃຈຊື້ສິນຄ້ານີ້:\n\n` +
-                        `📦 ຊື່ສິນຄ້າ: ${item.name}\n` +
-                        `💰 ລາຄາ: ${item.price}\n` +
-                        `📝 ລາຍລະອຽດ: ${item.desc}\n\n` +
-                        `ຮູບພາບ: ${item.img}`;
-
-        const encodedMessage = encodeURIComponent(message);
-        window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
-    }
-
-    // 5. ຟັງຊັນຄົ້ນຫາ ແລະ ປ່ຽນໜ້າ (ໃຊ້ຂອງເດີມ)
-    function searchProduct() {
-        let input = document.getElementById('searchInput').value.toLowerCase();
-        let cards = document.getElementsByClassName('product-card');
-        for (let i = 0; i < cards.length; i++) {
-            let name = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
-            cards[i].style.display = name.includes(input) ? "" : "none";
-        }
-    }
-
-    function setSearch(value) {
-        document.getElementById('searchInput').value = value;
-        searchProduct();
-    }
-
-    function openNav() { document.getElementById("mySidenav").style.width = "250px"; }
-    function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
-
-    function showPage(pageId) {
-        document.getElementById('promo-page').style.display = (pageId === 'promo') ? 'block' : 'none';
-        document.getElementById('productGrid').style.display = (pageId === 'home') ? 'grid' : 'none';
-        document.querySelector('.search-container').style.display = (pageId === 'home') ? 'block' : 'none';
-        closeNav();
-    }
-
-    // ເລີ່ມຕົ້ນດຶງຂໍ້ມູນເມື່ອເປີດເວັບ
-    fetchGoogleSheets();
-</script>
-
-<audio id="myAudio" src="BB.mp3" controls>
-
-</audio>
-
-
-<script>
-    function increaseVol() {
-        var audio = document.getElementById("myAudio");
-        
-        // ກວດສອບວ່າຫາໄຟລ໌ສຽງເຫັນບໍ່
-        if (audio.readyState === 0) {
-            alert("ຫາໄຟລ໌ສຽງບໍ່ເຫັນ! ກະລຸນາກວດຊື່ໄຟລ໌ music.mp3 ອີກຄັ້ງ");
-            return;
+            } catch (error) {
+                console.error("เกิดข้อผิดพลาด:", error);
+                document.getElementById('productGrid').innerHTML = `<div class="loading" style="color:red;">❌ ບໍ່ສາມາດໂຫຼດຂໍ້ມູນໄດ້ ກະລຸນາລໍຖ້າ</div>`;
+            }
         }
 
-        if (audio.volume < 1.0) {
-            audio.volume += 0.1;
-            console.log("ລະດັບສຽງປະຈຸບັນ: " + audio.volume);
-        }
-    }
-</script>
-
+        // ໃຫ້ລະບົບເຮັດງານທັນທີທີ່ເປີດໜ້າເວັບ
+        fetchProducts();
+    </script>
 </body>
-
 </html>
-
-
-
-
-
-
