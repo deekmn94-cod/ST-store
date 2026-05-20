@@ -114,25 +114,20 @@
         }
 
         .image-box {
-            width: 100%;
-            height: 180px;
-            overflow: hidden;
-            border-radius: 15px;
-            background-color: #f1f5f9;
-            margin-bottom: 15px;
-        }
+    width: 100%;       /* ໃຫ້ກວ້າງເຕັມກາດ */
+    height: 250px;     /* ກຳນົດຄວາມສູງໃຫ້ຄົງທີ່ */
+    overflow: hidden;  /* ປ້ອງກັນຮູບລົ້ນກອບ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9; /* ສີພື້ນຫຼັງຖ້າຮູບບໍ່ເຕັມ */
+}
 
-        .product-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* ຊູບຮູບພາບດ້ານໃນແບບນຸ່ມນວນ */
-            transition: transform 0.3s ease; 
-        }
-
-        .product-card:hover .product-img {
-            transform: scale(1.1);
-        }
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* ສຳຄັນ: ເຮັດໃຫ້ຮູບສະແດງທັງໝົດໂດຍບໍ່ຕັດຂອບ */
+}
 
         .product-name {
             font-size: 18px;
